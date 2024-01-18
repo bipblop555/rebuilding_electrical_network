@@ -17,3 +17,4 @@ class Infra :
 
 	def __radd__(self, other_infra):
 		return self.get_infra_difficulty() + other_infra
+
