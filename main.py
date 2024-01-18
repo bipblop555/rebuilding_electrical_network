@@ -24,17 +24,37 @@ def prepare_data(network_df):
 	list_buildings = []
 	for building_id, building_subdf in building_subdfs:
 		list_infras = [dict_infras[infra_id] for infra_id in building_subdf["infra_id"].values]
-		list_buildings.append(building.Building(id_building, list_infra))
+		list_buildings.append(building.Building(building_id, list_infras))
 
-	return dict_infras, list_building
+	return dict_infras, list_buildings
 
-
-
+ 
 def plannification(dict_infra, list_building):
-	# roule l'algo décrit dans les slides.
-	pass
-
+	"""
+	tant que la liste des batiments est non vide :
+		recupérer le batiment avec la plus petite difficulté
+		on repare toute les infras dont il dépend
+		enlever la batiment de la liste des buildings à traiter
+	"""
+	list_sorted_buildings = []
+	
+	while list_buildings:
+		easiest_building = min(list_buildings)
+		list_sorted_buildings.append(easiest_building)
+		for infra in easiest_building.list_infras:
+			infra.repair_infra()
+		list_buildings.remove(easiest_building)
+	
+	return list_sorted_buildings
 
 if __name__ == "__main__":
-	prepare_data(network_df)
-	# plannification(dict_infra, list_building)
+	dict_infras, list_buildings = prepare_data(network_df)
+
+	list_sorted_buildings = plannification(dict_infras, list_buildings)
+
+	priority_list, building_ids = [], []
+	for index, building in enumerate(list_sorted_buildings):
+		priority_list.append(index)
+		building_ids.append(building.id_building)
+
+	pandas.DataFrame({"priority" : priority_list, "id_bat": building_ids}).to_excel("./priorities.xlsx", index=False)
