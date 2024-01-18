@@ -18,3 +18,9 @@ class Infra :
 	def __radd__(self, other_infra):
 		return self.get_infra_difficulty() + other_infra
 
+
+	def __str__(self):
+		return f"{self.infra_id}\n{self.length}\n{self.infra_type}\n{self.nb_houses}"
+
+	def __repr__(self):
+		return f"object infra id :{self.infra_id}"
