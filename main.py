@@ -2,7 +2,6 @@ import infra, building
 
 import pandas
 
-
 network_df = pandas.read_csv("./reseau_en_arbre.csv").drop_duplicates()
 
 def prepare_data(network_df):

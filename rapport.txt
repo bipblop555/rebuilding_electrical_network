@@ -1,0 +1,9 @@
+Rapport : Planification du raccordement électrique de bâtiments
+
+Notre métrique de priorisation utilisé est simple. Nous prenons en compte le nombre de personnes dépendantes du noeud qui sera réparé. Nous ajoutons à cela le longueur du cable à réparer. De sorte à ce que sois prioritaires un bâtiment dont le cout de réparation sera faible (faible longueur) et où le plus grand nombre de personnes sera affectée.
+
+L'application vous permettrait d'économiser de l'argent. L'application vous donne la suite logique selon laquelle vous devriez cabler les personnes ayant perdu la connection. 
+
+Les défis rencontrées ont été principalement le temps de calcul. Nous avons du optimiser les types de variables pour pouvoir avoir un temps d'execution rapide. Nous avons pu drastiquement réduire le temps necessaire au calcul.
+
+
